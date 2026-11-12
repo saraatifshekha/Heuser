@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catch Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-container">
+    <!-- Top HUD Status Bar -->
+    <header id="game-hud">
+      <div class="hud-item"><span class="hud-label">Score:</span> <strong id="hud-score">0</strong></div>
+      <div class="hud-item"><span class="hud-label">Lives:</span> <span id="hud-lives">❤️❤️❤️</span></div>
+      <div class="hud-item"><span class="hud-label">Round:</span> <strong id="hud-round">1</strong></div>
+      <div class="hud-item"><span class="hud-label">Best:</span> <strong id="hud-highscore">0</strong></div>
+
+      <!-- Controls Group (Settings, Pause & Mute) -->
+      <div class="hud-controls">
+        <button id="btn-settings" class="hud-btn" type="button" aria-label="Open Settings" title="Settings & Progress (S)">
+          <span id="settings-icon">⚙️</span>
+        </button>
+        <button id="btn-pause" class="hud-btn" type="button" aria-label="Pause Game" title="Pause Game (P or Space)">
+          <span id="pause-icon">⏸️</span>
+        </button>
+        <button id="btn-mute" class="hud-btn" type="button" aria-label="Toggle Sound" title="Toggle Sound (M)">
+          <span id="mute-icon">🔊</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Canvas Game Area -->
+    <canvas id="gameCanvas" width="480" height="640"></canvas>
+
+    <!-- Visual Floating Notification Toast -->
+    <div id="game-toast" class="toast-hidden" aria-live="polite"></div>
+
+    <!-- Start Overlay Screen (Menu State) -->
+    <div id="screen-start" class="screen-overlay">
+      <div class="banner-tag">Stage 5 • Debugging &amp; Polish</div>
+      <h1 class="game-title">Catch Game</h1>
+      <p class="game-subtitle">Catch the good, dodge the bombs!</p>
+      
+      <div class="rules-card">
+        <div class="rule-entry">
+          <span class="badge-ball"></span>
+          <div>
+            <strong>Green Ball</strong>
+            <p>Catch for +1 Score. Missing drops 1 Life.</p>
+          </div>
+        </div>
+        <div class="rule-entry">
+          <span class="badge-bomb"></span>
+          <div>
+            <strong>Bomb</strong>
+            <p>Dodge it! Catching explodes &amp; drops 1 Life. Missing does nothing.</p>
+          </div>
+        </div>
+        <div class="rule-meta">
+          <p>Controls: <strong>Left / Right Arrows</strong></p>
+          <p>Pause: <strong>[P] / [Space]</strong></p>
+          <p>Settings: <strong>[S]</strong></p>
+        </div>
+      </div>
+
+      <div class="menu-actions">
+        <button id="btn-start" class="btn-primary" type="button">Start Game</button>
+        <button id="btn-open-settings-menu" class="btn-secondary" type="button">⚙️ Settings &amp; Stats</button>
+      </div>
+    </div>
+
+    <!-- Pause Overlay Screen (Paused State) -->
+    <div id="screen-pause" class="screen-overlay hidden">
+      <div class="banner-tag">Paused</div>
+      <h2 class="game-title">Game Paused</h2>
+      <p class="game-subtitle">Press Resume or tap [P] / [Space] to continue</p>
+      <div class="menu-actions">
+        <button id="btn-resume" class="btn-primary" type="button">Resume Game</button>
+        <button id="btn-pause-settings" class="btn-secondary" type="button">⚙️ Settings &amp; Storage</button>
+        <button id="btn-quit" class="btn-tertiary" type="button">Return to Main Menu</button>
+      </div>
+    </div>
+
+    <!-- Game Over Overlay Screen (Over State) -->
+    <div id="screen-gameover" class="screen-overlay hidden">
+      <div class="banner-tag over-tag">Match Concluded</div>
+      <h1 class="game-title title-over">Game Over</h1>
+      <div class="final-stats">
+        <div class="stat-box">
+          <span class="stat-label">Final Score</span>
+          <strong id="summary-score" class="stat-value">0</strong>
+          <span id="summary-new-record" class="record-badge hidden">🏆 New High Score!</span>
+        </div>
+        <div class="stat-row">
+          <p>All-Time Best: <strong id="summary-best">0</strong></p>
+          <p>Rounds Reached: <strong id="summary-round">1</strong></p>
+        </div>
+        <div class="stat-row">
+          <p>Objects Fallen: <strong id="summary-resolved">0</strong></p>
+          <p>Total Games: <strong id="summary-total-games">0</strong></p>
+        </div>
+      </div>
+      <div class="menu-actions">
+        <button id="btn-restart" class="btn-primary" type="button">Play Again</button>
+        <button id="btn-over-settings" class="btn-secondary" type="button">⚙️ Settings &amp; Storage</button>
+        <button id="btn-over-menu" class="btn-tertiary" type="button">Main Menu</button>
+      </div>
+    </div>
+
+    <!-- Settings & Storage Modal Overlay -->
+    <div id="screen-settings" class="screen-overlay hidden">
+      <div class="settings-modal-card">
+        <div class="settings-header">
+          <h2 class="settings-title">⚙️ Settings &amp; Storage</h2>
+          <button id="btn-close-settings" class="btn-close-icon" type="button" aria-label="Close Settings">✕</button>
+        </div>
+
+        <div class="settings-scroll-area">
+          <!-- Section 1: All-Time Progress & Records -->
+          <div class="settings-section">
+            <h3 class="section-title">📊 Lifetime Progress</h3>
+            <div class="stats-grid">
+              <div class="stat-tile">
+                <span class="tile-label">High Score</span>
+                <strong id="storage-high-score" class="tile-val">0</strong>
+              </div>
+              <div class="stat-tile">
+                <span class="tile-label">Max Round</span>
+                <strong id="storage-max-round" class="tile-val">1</strong>
+              </div>
+              <div class="stat-tile">
+                <span class="tile-label">Total Catches</span>
+                <strong id="storage-total-catches" class="tile-val">0</strong>
+              </div>
+              <div class="stat-tile">
+                <span class="tile-label">Games Played</span>
+                <strong id="storage-games-played" class="tile-val">0</strong>
+              </div>
+              <div class="stat-tile full-tile">
+                <span class="tile-label">Total Objects Fallen</span>
+                <strong id="storage-total-resolved" class="tile-val">0</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Preferences -->
+          <div class="settings-section">
+            <h3 class="section-title">🎛️ Preferences</h3>
+            <div class="pref-row">
+              <div class="pref-info">
+                <span class="pref-title">Audio &amp; Sounds</span>
+                <span class="pref-desc">Web Audio &amp; Voice alerts</span>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="setting-sound-toggle" checked>
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div class="pref-row">
+              <div class="pref-info">
+                <span class="pref-title">Screen Shake</span>
+                <span class="pref-desc">Impact vibrations on explosions</span>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="setting-shake-toggle" checked>
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div class="pref-row">
+              <div class="pref-info">
+                <span class="pref-title">Paddle Speed</span>
+                <span class="pref-desc" id="setting-speed-label">Normal (420 px/s)</span>
+              </div>
+              <div class="paddle-speed-radios">
+                <button type="button" class="btn-pill" data-speed="slow">Slow</button>
+                <button type="button" class="btn-pill active" data-speed="normal">Normal</button>
+                <button type="button" class="btn-pill" data-speed="fast">Fast</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Data Management & Reset -->
+          <div class="settings-section danger-zone">
+            <h3 class="section-title">💾 Local Storage Data</h3>
+            <p class="section-desc">Data is persistently retained in your browser via <code>localStorage</code>.</p>
+            <div class="danger-actions">
+              <button id="btn-reset-data" class="btn-danger" type="button">⚠️ Reset All Saved Data</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="settings-footer">
+          <button id="btn-done-settings" class="btn-primary btn-full" type="button">Done</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Confirm Reset Dialog Modal -->
+    <div id="modal-confirm-reset" class="modal-dialog hidden">
+      <div class="confirm-card">
+        <h3>Reset All Data?</h3>
+        <p>This will erase your high score, progress records, and settings from <code>localStorage</code>. This action cannot be undone.</p>
+        <div class="confirm-actions">
+          <button id="btn-confirm-cancel" class="btn-secondary" type="button">Cancel</button>
+          <button id="btn-confirm-reset" class="btn-danger" type="button">Yes, Reset Data</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
