@@ -1,0 +1,154 @@
+/* ==========================================================================
+   INTERACTIVE DIGITAL DIARY - EXTERNAL STYLESHEET (css/style.css)
+   Palette: Dusty Pink (#D8A7B1), Lavender (#B6A6CA), Dark Plum (#3B1E36), Cream (#FAF5EE)
+   ========================================================================== */
+:root {
+    --color-cream: #FAF5EE;
+    --color-cream-dark: #F0E6D8;
+    --color-dusty-pink: #D8A7B1;
+    --color-dusty-pink-soft: #EBD2D7;
+    --color-lavender: #B6A6CA;
+    --color-lavender-soft: #DFD7E8;
+    --color-dark-plum: #3B1E36;
+    --color-plum-muted: #684561;
+    --paper-line: rgba(182, 166, 202, 0.25);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--color-dark-plum);
+    background-image: 
+        radial-gradient(circle at 15% 20%, rgba(216, 167, 177, 0.18) 0%, transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(182, 166, 202, 0.22) 0%, transparent 50%);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--color-dark-plum);
+    min-height: 100vh;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+.font-serif-editorial { font-family: 'Cormorant Garamond', serif; }
+.font-handwriting { font-family: 'Caveat', cursive; }
+
+/* Diary Book Spread Container */
+.diary-spread {
+    width: 100%;
+    max-width: 1120px;
+    background-color: var(--color-cream);
+    background-image: linear-gradient(to bottom, transparent 95%, var(--paper-line) 96%);
+    background-size: 100% 32px;
+    border-radius: 24px;
+    padding: 2.5rem;
+    position: relative;
+    box-shadow: 
+        0 25px 60px -15px rgba(18, 7, 16, 0.65),
+        inset 0 0 40px rgba(216, 167, 177, 0.25),
+        0 0 0 10px var(--color-dusty-pink),
+        0 0 0 14px #281224;
+    animation: pageEnter 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes pageEnter {
+    from { opacity: 0; transform: translateY(14px) scale(0.99); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (min-width: 1024px) {
+    .diary-spine::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 48px;
+        transform: translateX(-50%);
+        background: linear-gradient(
+            to right,
+            transparent 0%,
+            rgba(59, 30, 54, 0.04) 35%,
+            rgba(59, 30, 54, 0.14) 50%,
+            rgba(59, 30, 54, 0.04) 65%,
+            transparent 100%
+        );
+        pointer-events: none;
+    }
+}
+
+/* Washi Tape & Polaroid Frames */
+.washi-tape {
+    background-color: rgba(216, 167, 177, 0.72);
+    backdrop-filter: blur(2px);
+    box-shadow: 0 2px 6px rgba(59, 30, 54, 0.12);
+    border-left: 2px dashed rgba(255, 255, 255, 0.5);
+    border-right: 2px dashed rgba(255, 255, 255, 0.5);
+}
+
+.washi-lavender { background-color: rgba(182, 166, 202, 0.75); }
+
+.polaroid-card {
+    background: #FFFFFF;
+    padding: 12px 12px 32px 12px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(59, 30, 54, 0.16);
+    border: 1px solid rgba(59, 30, 54, 0.08);
+    transition: transform 0.35s ease;
+}
+
+.polaroid-card:hover { transform: rotate(0deg) scale(1.02); }
+
+/* Floating Decorative & Keepsake Animations */
+@keyframes gentleFloat {
+    0%, 100% { transform: translateY(0px) rotate(var(--rot, 0deg)); }
+    50% { transform: translateY(-7px) rotate(calc(var(--rot, 0deg) + 1.5deg)); }
+}
+
+.floating-element { animation: gentleFloat 5.5s ease-in-out infinite; }
+.floating-delay-1 { animation-delay: 0.8s; }
+.floating-delay-2 { animation-delay: 1.7s; }
+.floating-delay-3 { animation-delay: 2.5s; }
+.floating-delay-4 { animation-delay: 3.2s; }
+
+.keepsake-object {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+    cursor: pointer;
+}
+
+.keepsake-object:hover {
+    transform: translateY(-8px) scale(1.04) rotate(0deg) !important;
+    box-shadow: 0 18px 30px -10px rgba(59, 30, 54, 0.28);
+    z-index: 20;
+}
+
+/* Floating Ribbon Bookmark to Return Home */
+.ribbon-bookmark {
+    position: fixed;
+    top: 0;
+    right: 2.5rem;
+    z-index: 50;
+    background-color: var(--color-dark-plum);
+    color: var(--color-cream);
+    padding: 1rem 1.1rem 1.4rem;
+    border-radius: 0 0 16px 16px;
+    border: 2px solid var(--color-dusty-pink);
+    border-top: none;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    box-shadow: 0 12px 24px rgba(18, 7, 16, 0.4);
+    transition: padding-top 0.3s ease;
+}
+
+.ribbon-bookmark:hover { padding-top: 1.5rem; }

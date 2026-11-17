@@ -1,1 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Interactive Digital Diary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
+    <main class="diary-spread diary-spine">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            <!-- LEFT DIARY PAGE -->
+            <div class="lg:col-span-6 flex flex-col justify-between space-y-6 lg:pr-4">
+                <div class="flex items-center justify-between border-b border-[#B6A6CA]/40 pb-2">
+                    <span class="font-handwriting text-2xl text-[#684561]">Entry No. 01 &mdash; Personal Archive</span>
+                    <span class="text-xs uppercase tracking-widest px-3 py-1 rounded-full bg-[#DFD7E8] text-[#3B1E36] font-semibold">CS Portfolio</span>
+                </div>
+
+                <div class="space-y-3">
+                    <h1 class="font-serif-editorial text-4xl sm:text-5xl font-bold text-[#3B1E36] leading-tight">
+                        Dear Reader, <br>
+                        <span class="italic font-normal text-[#684561]">welcome to my mind on paper.</span>
+                    </h1>
+                    <p class="text-sm sm:text-base text-[#3B1E36]/85 leading-relaxed">
+                        Instead of a sterile grid of links, I bound my Computer Science journey into this keepsake diary. Every object resting on these pages holds a chapter of who I am—click any photograph, ticket, or trinket to turn the page.
+                    </p>
+                </div>
+
+                <!-- Author Photograph Polaroid (assets/images/portrait.jpg) -->
+                <div class="relative mx-auto sm:mx-4 my-2 max-w-xs w-full">
+                    <div class="washi-tape w-24 h-6 absolute -top-3 left-1/2 -translate-x-1/2 -rotate-3 z-20 rounded-sm"></div>
+                    <div class="polaroid-card -rotate-2">
+                        <div class="relative aspect-square w-full overflow-hidden rounded bg-[#EBD2D7]">
+                            <img src="assets/images/portrait.jpg" alt="My Portrait" class="w-full h-full object-cover" />
+                        </div>
+                        <div class="pt-3 text-center">
+                            <p class="font-handwriting text-2xl text-[#3B1E36] leading-none">Curious &bull; Explorer &bull; Kind</p>
+                            <p class="text-[11px] uppercase tracking-widest text-[#684561] mt-1">Click any item on the right to explore &rarr;</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Short Explanation of Website Concept -->
+                <div class="bg-[#EBD2D7]/45 border border-[#D8A7B1] rounded-2xl p-4 text-xs sm:text-sm text-[#3B1E36]/90">
+                    <p class="font-serif-editorial font-bold text-base text-[#3B1E36] mb-1">✦ Why This Portfolio Is Unconventional</p>
+                    <p class="leading-relaxed">
+                        Traditional developer portfolios rely on rigid top navigation bars and corporate templates. This <strong>Interactive Digital Diary</strong> replaces menus with spatial storytelling—inviting visitors to explore my life organically through tactile keepsakes, handwritten margins, and illustrated artifacts.
+                    </p>
+                </div>
+            </div>
+
+            <!-- RIGHT DIARY PAGE: Interactive Illustrated Objects -->
+            <div class="lg:col-span-6 lg:pl-6 flex flex-col justify-between space-y-5">
+                <span class="font-handwriting text-2xl text-[#684561]">Tap a keepsake to open its chapter...</span>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                    <!-- about.html -->
+                    <a href="about.html" data-diary-nav style="--rot: -1.5deg;" class="keepsake-object floating-element bg-[#FFFDF9] border-2 border-[#D8A7B1] rounded-2xl p-4 relative shadow-md">
+                        <div class="washi-tape w-14 h-4 absolute -top-2 right-4 rotate-6 rounded-sm"></div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-14 h-14 rounded-xl bg-[#EBD2D7]/60 flex items-center justify-center shrink-0 text-[#3B1E36]">
+                                <svg class="w-9 h-9" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><circle cx="24" cy="18" r="9" fill="#D8A7B1" fill-opacity="0.4"/><path d="M24 27v15M24 35h6M24 40h4" stroke-linecap="round"/><circle cx="24" cy="18" r="3" fill="#3B1E36"/></svg>
+                            </div>
+                            <div>
+                                <span class="text-[10px] uppercase tracking-widest text-[#684561] font-semibold">Chapter I</span>
+                                <h2 class="font-serif-editorial text-xl font-bold text-[#3B1E36]">About Me</h2>
+                                <p class="font-handwriting text-lg text-[#684561] leading-tight">Curious, explorer &amp; kind</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- interests.html -->
+                    <a href="interests.html" data-diary-nav style="--rot: 1.5deg;" class="keepsake-object floating-element floating-delay-1 bg-[#FFFDF9] border-2 border-[#B6A6CA] rounded-2xl p-4 relative shadow-md">
+                        <div class="washi-tape washi-lavender w-14 h-4 absolute -top-2 left-4 -rotate-6 rounded-sm"></div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-14 h-14 rounded-xl bg-[#DFD7E8]/70 flex items-center justify-center shrink-0 text-[#3B1E36]">
+                                <svg class="w-9 h-9" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 20h22v10a11 11 0 01-22 0V20z" fill="#B6A6CA" fill-opacity="0.45"/><path d="M32 22h4a4 4 0 010 8h-4"/><path d="M16 12c0-2 2-3 2-5M23 12c0-2 2-3 2-5" stroke-linecap="round"/></svg>
+                            </div>
+                            <div>
+                                <span class="text-[10px] uppercase tracking-widest text-[#684561] font-semibold">Chapter II</span>
+                                <h2 class="font-serif-editorial text-xl font-bold text-[#3B1E36]">My Interests</h2>
+                                <p class="font-handwriting text-lg text-[#684561] leading-tight">Code, novels &amp; new ideas</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- projects.html -->
+                    <a href="projects.html" data-diary-nav style="--rot: 1deg;" class="keepsake-object floating-element floating-delay-2 bg-[#FFFDF9] border-2 border-[#3B1E36]/30 rounded-2xl p-4 relative shadow-md">
+                        <div class="flex items-center gap-3">
+                            <div class="w-14 h-14 rounded-xl bg-[#3B1E36] flex items-center justify-center shrink-0 text-[#FAF5EE]">
+                                <svg class="w-8 h-8" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="10" width="32" height="22" rx="3" fill="#D8A7B1" fill-opacity="0.25"/><path d="M4 36h40" stroke-linecap="round"/><path d="M18 19l-4 3 4 3M30 19l4 3-4 3M26 17l-4 10" stroke="#D8A7B1" stroke-linecap="round"/></svg>
+                            </div>
+                            <div>
+                                <span class="text-[10px] uppercase tracking-widest text-[#684561] font-semibold">Chapter III</span>
+                                <h2 class="font-serif-editorial text-xl font-bold text-[#3B1E36]">My Projects</h2>
+                                <p class="font-handwriting text-lg text-[#684561] leading-tight">My Catch Game build</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- achievements.html -->
+                    <a href="achievements.html" data-diary-nav style="--rot: -1deg;" class="keepsake-object floating-element floating-delay-3 bg-[#FFFDF9] border-2 border-[#D8A7B1] rounded-2xl p-4 relative shadow-md">
+                        <div class="flex items-center gap-3">
+                            <div class="w-14 h-14 rounded-xl bg-[#EBD2D7]/70 flex items-center justify-center shrink-0 text-[#3B1E36]">
+                                <svg class="w-9 h-9" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><circle cx="24" cy="20" r="10" fill="#D8A7B1" fill-opacity="0.5"/><path d="M19 29l-3 13 8-4 8 4-3-13" stroke-linejoin="round"/><path d="M24 14l1.8 3.6 4 .6-2.9 2.8.7 4-3.6-1.9-3.6 1.9.7-4-2.9-2.8 4-.6L24 14z" fill="#3B1E36"/></svg>
+                            </div>
+                            <div>
+                                <span class="text-[10px] uppercase tracking-widest text-[#684561] font-semibold">Chapter IV</span>
+                                <h2 class="font-serif-editorial text-xl font-bold text-[#3B1E36]">Achievements</h2>
+                                <p class="font-handwriting text-lg text-[#684561] leading-tight">HRCA, MUN &amp; Olympiad</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- dreams.html -->
+                    <a href="dreams.html" data-diary-nav style="--rot: 0.5deg;" class="sm:col-span-2 keepsake-object floating-element floating-delay-4 bg-gradient-to-r from-[#DFD7E8]/65 to-[#EBD2D7]/65 border-2 border-[#B6A6CA] rounded-2xl p-4 relative shadow-md">
+                        <div class="flex items-center justify-between gap-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-14 h-14 rounded-xl bg-[#FAF5EE] flex items-center justify-center shrink-0 text-[#3B1E36] shadow-inner">
+                                    <svg class="w-9 h-9" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M40 8L8 22l12 5 14-13-10 16 11 5L40 8z" fill="#B6A6CA" fill-opacity="0.5" stroke-linejoin="round"/><path d="M20 27v11l5-6" stroke-linejoin="round"/></svg>
+                                </div>
+                                <div>
+                                    <span class="text-[10px] uppercase tracking-widest text-[#684561] font-semibold">Chapter V</span>
+                                    <h2 class="font-serif-editorial text-xl font-bold text-[#3B1E36]">Future Aspirations</h2>
+                                    <p class="font-handwriting text-lg text-[#684561] leading-tight">Exploring Mathematics, Data Science &amp; CS</p>
+                                </div>
+                            </div>
+                            <span class="font-serif-editorial italic text-sm text-[#3B1E36] hidden sm:inline">Open &rarr;</span>
+                        </div>
+                    </a>
+
+                    <!-- HOMEWORK 7: Catch Game Link -->
+                    <a href="https://saraatifshekha.github.io/Heuser/CS_CRP/Homework_6/" target="_blank" rel="noopener noreferrer" style="--rot: -1deg;" class="sm:col-span-2 keepsake-object bg-[#3B1E36] text-[#FAF5EE] border-2 border-dashed border-[#D8A7B1] rounded-2xl p-4 relative shadow-lg">
+                        <div class="flex items-center justify-between gap-4">
+                            <div class="flex items-center gap-3.5">
+                                <div class="w-14 h-14 rounded-xl bg-[#D8A7B1] text-[#3B1E36] flex items-center justify-center shrink-0">
+                                    <svg class="w-8 h-8" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="8" y="14" width="32" height="20" rx="6" fill="#FAF5EE"/><path d="M16 24h6M19 21v6" stroke-linecap="round"/><circle cx="30" cy="22" r="1.5" fill="#3B1E36"/><circle cx="34" cy="26" r="1.5" fill="#3B1E36"/></svg>
+                                </div>
+                                <div>
+                                    <span class="text-[10px] uppercase tracking-widest text-[#D8A7B1] font-semibold">Homework 7 &bull; Arcade Keepsake</span>
+                                    <h2 class="font-serif-editorial text-xl font-bold text-[#FAF5EE]">Play My Catch Game</h2>
+                                    <p class="font-handwriting text-lg text-[#DFD7E8] leading-tight">Click this ticket to launch Homework 6!</p>
+                                </div>
+                            </div>
+                            <span class="bg-[#D8A7B1] text-[#3B1E36] px-3 py-1.5 rounded-full text-xs font-bold shrink-0">Launch &nearr;</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/script.js"></script>
+</body>
+</html>

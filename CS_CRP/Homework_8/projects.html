@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects | Interactive Digital Diary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <a href="index.html" data-diary-nav class="ribbon-bookmark" title="Return to Diary Cover">
+        <span class="font-handwriting text-lg">Cover</span>
+    </a>
+    <main class="diary-spread">
+        <div class="space-y-8">
+            <div class="border-b border-[#B6A6CA]/50 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+                <div>
+                    <span class="font-handwriting text-2xl text-[#684561]">Chapter III &mdash; My First Build</span>
+                    <h1 class="font-serif-editorial text-4xl font-bold text-[#3B1E36]">My Projects</h1>
+                </div>
+                <a href="index.html" data-diary-nav class="px-4 py-1.5 rounded-full bg-[#EBD2D7] text-[#3B1E36] text-sm font-medium">&larr; Back to Cover</a>
+            </div>
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-[#3B1E36] text-[#FAF5EE] rounded-3xl p-6 sm:p-8 shadow-xl border-2 border-[#D8A7B1] space-y-5">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <span class="text-xs uppercase tracking-widest px-3 py-1 rounded-full bg-[#D8A7B1]/20 text-[#D8A7B1] font-semibold">Homework 6 &bull; My First Project</span>
+                        <span class="font-handwriting text-xl text-[#DFD7E8]">HTML &bull; CSS &bull; JavaScript</span>
+                    </div>
+                    <div class="space-y-2">
+                        <h2 class="font-serif-editorial text-3xl sm:text-4xl font-bold text-[#FAF5EE]">Catch Game</h2>
+                        <p class="text-sm sm:text-base text-[#FAF5EE]/90 leading-relaxed">
+                            My only project so far—and the one that started my journey into interactive web development! Created for <strong>Homework 6</strong>, Catch Game is a fun, playable browser game where you react quickly to catch falling items and build your score.
+                        </p>
+                    </div>
+                    <div class="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-[#D8A7B1]/25">
+                        <span class="font-handwriting text-2xl text-[#D8A7B1]">Ready to test your reflexes?</span>
+                        <a href="https://saraatifshekha.github.io/Heuser/CS_CRP/Homework_6/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-[#D8A7B1] text-[#3B1E36] font-bold text-sm px-6 py-3 rounded-xl hover:bg-[#FAF5EE] transition shadow-md">Play Catch Game &nearr;</a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-between pt-2">
+                <a href="interests.html" data-diary-nav class="px-4 py-2 rounded-full bg-[#DFD7E8] text-[#3B1E36] text-sm font-medium">&larr; Interests</a>
+                <a href="achievements.html" data-diary-nav class="px-5 py-2.5 rounded-full bg-[#3B1E36] text-[#FAF5EE] text-sm font-medium">Chapter IV: Achievements &rarr;</a>
+            </div>
+        </div>
+    </main>
+    <script src="js/script.js"></script>
+</body>
+</html>

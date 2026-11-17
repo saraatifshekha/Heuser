@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | Interactive Digital Diary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <a href="index.html" data-diary-nav class="ribbon-bookmark" title="Return to Diary Cover">
+        <span class="font-handwriting text-lg">Cover</span>
+    </a>
+    <main class="diary-spread diary-spine">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div class="lg:col-span-6 space-y-5 lg:pr-6">
+                <span class="font-handwriting text-2xl text-[#684561]">Chapter I &mdash; Who I Am</span>
+                <h1 class="font-serif-editorial text-4xl sm:text-5xl font-bold text-[#3B1E36]">Curious, Explorer &amp; Kind</h1>
+                <div class="flex flex-wrap gap-2.5 pt-1">
+                    <span class="px-3.5 py-1 rounded-full bg-[#EBD2D7] border border-[#D8A7B1] text-[#3B1E36] text-xs font-semibold tracking-wide">✦ Curious</span>
+                    <span class="px-3.5 py-1 rounded-full bg-[#DFD7E8] border border-[#B6A6CA] text-[#3B1E36] text-xs font-semibold tracking-wide">✦ Explorer</span>
+                    <span class="px-3.5 py-1 rounded-full bg-[#FFFDF9] border border-[#3B1E36]/30 text-[#3B1E36] text-xs font-semibold tracking-wide">✦ Kind</span>
+                </div>
+                <p class="text-[#3B1E36]/90 leading-relaxed">
+                    Hi there! If I had to sum up who I am in just three words, they would be <strong>Curious</strong>, <strong>Explorer</strong>, and <strong>Kind</strong>. I love asking "how does this work?" and finding thoughtful, creative answers—whether I am writing lines of code or getting lost in a great story.
+                </p>
+                <p class="text-[#3B1E36]/90 leading-relaxed">
+                    In my free time, you will usually find me between two worlds: <strong>programming</strong> interactive ideas on my laptop or <strong>reading novels</strong> that spark my imagination. Both remind me that patience, empathy, and curiosity can turn small beginnings into something unforgettable.
+                </p>
+                <div class="bg-[#DFD7E8]/60 border-l-4 border-[#3B1E36] p-4 rounded-r-2xl space-y-2">
+                    <h3 class="font-serif-editorial font-bold text-lg text-[#3B1E36]">Three Words, One Story</h3>
+                    <ul class="text-sm space-y-1.5 text-[#3B1E36]/90">
+                        <li><strong>Curious:</strong> Always eager to understand new ideas, logic, and perspectives.</li>
+                        <li><strong>Explorer:</strong> Excited to try new things—from coding challenges to unfamiliar book genres.</li>
+                        <li><strong>Kind:</strong> Believing warmth, patience, and genuine care matter in everything I do.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lg:col-span-6 lg:pl-6 flex flex-col items-center justify-center space-y-6">
+                <div class="polaroid-card rotate-2 max-w-xs w-full">
+                    <div class="aspect-square rounded overflow-hidden bg-[#EBD2D7]">
+                        <img src="assets/images/portrait.jpg" alt="My Portrait" class="w-full h-full object-cover" />
+                    </div>
+                    <p class="font-handwriting text-2xl text-center text-[#3B1E36] pt-3">A chapter of code &amp; stories</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-3 pt-2">
+                    <a href="index.html" data-diary-nav class="px-4 py-2 rounded-full bg-[#EBD2D7] text-[#3B1E36] text-sm font-medium">&larr; Diary Desk</a>
+                    <a href="interests.html" data-diary-nav class="px-4 py-2 rounded-full bg-[#3B1E36] text-[#FAF5EE] text-sm font-medium">Next: My Interests &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/script.js"></script>
+</body>
+</html>
